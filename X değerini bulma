@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class Main {
+
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    System.out.print("Denklemi girin: ");
+    String denklem = scanner.nextLine();
+    String[] tokens = denklem.split(" ");
+    int x = 0;
+    for (int i = 0; i < tokens.length; i++) {
+      if (tokens[i].equals("x")) {
+        if (i == 0) {
+          x = Integer.parseInt(tokens[i + 2]);
+        } else if (tokens[i - 1].equals("+")) {
+          x = Integer.parseInt(tokens[i + 1]) - Integer.parseInt(tokens[i + 3]);
+        } else if (tokens[i - 1].equals("-")) {
+          x = Integer.parseInt(tokens[i + 1]) + Integer.parseInt(tokens[i + 3]);
+        } else if (tokens[i - 1].equals("*")) {
+          x = Integer.parseInt(tokens[i + 3]) / Integer.parseInt(tokens[i - 2]);
+        } else if (tokens[i - 1].equals("/")) {
+          x = Integer.parseInt(tokens[i + 3]) * Integer.parseInt(tokens[i - 2]);
+        }
+      }
+    }
+    System.out.println("x = " + x);
+  }
+}

@@ -1,0 +1,44 @@
+@ -0,0 +1,43 @@
+import java.util.Scanner;
+
+public class RockPaperScissors {
+
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    int userScore = 0;
+    int computerScore = 0;
+    System.out.println("Welcome to the Rock-Paper-Scissors game!");
+    System.out.println("1 - Rock, 2 - Paper, 3 - Scissors");
+
+    while (true) {
+      System.out.print("Enter your choice: ");
+      int userChoice = scanner.nextInt();
+      int computerChoice = (int) (Math.random() * 3) + 1;
+
+      if (userChoice == computerChoice) {
+        System.out.println("It's a tie!");
+      } else if (
+        (userChoice == 1 && computerChoice == 3) ||
+        (userChoice == 2 && computerChoice == 1) ||
+        (userChoice == 3 && computerChoice == 2)
+      ) {
+        System.out.println("You win this round!");
+        userScore++;
+      } else {
+        System.out.println("The computer wins this round!");
+        computerScore++;
+      }
+
+      System.out.println("Your score: " + userScore);
+      System.out.println("Computer score: " + computerScore);
+
+      if (userScore == 3) {
+        System.out.println("Congratulations! You won the game!");
+        break;
+      } else if (computerScore == 3) {
+        System.out.println("Sorry, you lost the game.");
+        break;
+      }
+    }
+  }
+}
